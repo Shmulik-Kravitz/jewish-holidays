@@ -1,0 +1,49 @@
+{
+  "name": "jewish-holidays",
+  "version": "1.0.0",
+  "description": "Jewish holidays",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shmulik-Kravitz/jewish-holidays.git"
+  },
+  "scripts": {
+    "build": "tsup ./src/index.ts --dts --format esm,cjs",
+    "test": "vitest --config ./config/vitest/vitest.config.ts  --coverage",
+    "prepack": "yarn build",
+    "clean": "rimraf dist",
+    "api": "yarn api-extractor run --local --verbose"
+  },
+  "dependencies": {
+    "jewish-date": "^2.0.15"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.47.11",
+    "@vitest/coverage-v8": "2.1.3",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
+  },
+  "dependenciesMeta": {
+    "@microsoft/api-extractor": {
+      "unplugged": true
+    },
+    "@microsoft/api-extractor-model": {
+      "unplugged": true
+    },
+    "jewish-date": {
+      "unplugged": true
+    }
+  }
+}
