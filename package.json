@@ -1,6 +1,6 @@
 {
   "name": "jewish-holidays",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Jewish holidays",
   "license": "MIT",
   "main": "dist/index.js",
@@ -45,5 +45,16 @@
     "jewish-date": {
       "unplugged": true
     }
-  }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "jewish",
+    "holidays",
+    "hebrew",
+    "date",
+    "luach",
+    "calendar"
+  ]
 }
