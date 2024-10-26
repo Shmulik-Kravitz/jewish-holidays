@@ -1,6 +1,6 @@
 {
   "name": "jewish-holidays",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Jewish holidays",
   "license": "MIT",
   "main": "dist/index.js",
