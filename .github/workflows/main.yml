@@ -110,10 +110,10 @@ jobs:
 
       - name: Set the tag to v${{ steps.get_version.outputs.version }}
         run: |
-          git tag -a v${{ steps.get_version.outputs.version }} -m "Version ${{ steps.get_version.outputs.version }}"
-          git push origin v${{ steps.get_version.outputs.version }}
+          git tag v${{ steps.get_version.outputs.version }}
 
-      - name: Commit 
+      - name: commit & push
         run: |
-          git add .
+          git commit -am v${{ steps.get_version.outputs.version }}
           git push
+          git push origin v${{ steps.get_version.outputs.version }}

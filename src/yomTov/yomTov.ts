@@ -11,7 +11,7 @@ const getYomTovListIsrael = (): Holiday[] => {
         { day: 2, monthName: "Tishri", name: 'Rosh Hashanah' },
         { day: 10, monthName: "Tishri", name: 'Yom Kippur' },
         { day: 15, monthName: "Tishri", name: 'Sukkot' },
-        { day: 24, monthName: "Tishri", name: 'Sukkot' },
+        { day: 22, monthName: "Tishri", name: 'Simchat Torah' },
 
         { day: 15, monthName: "Nisan", name: 'Pesach' },
         { day: 21, monthName: "Nisan", name: 'Shevii Shel Pesach' },

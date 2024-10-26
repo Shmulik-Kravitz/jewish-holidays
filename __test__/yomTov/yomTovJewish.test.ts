@@ -28,8 +28,8 @@ describe("Yom Tov Validation for Jewish Dates", () => {
         expect(result).toStrictEqual(true);
     });
 
-    it("should return true for Sukkot on 24 Tishri 5785", () => {
-        const jewishDate: BasicJewishDate = { day: 24, monthName: "Tishri", year: 5785 };
+    it("should return true for Sukkot on 22 Tishri 5785", () => {
+        const jewishDate: BasicJewishDate = { day: 22, monthName: "Tishri", year: 5785 };
         const result = isYomTov(jewishDate);
         expect(result).toStrictEqual(true);
     });
