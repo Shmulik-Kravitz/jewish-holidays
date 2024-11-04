@@ -61,7 +61,7 @@ describe("chol HaMoed Validation for Jewish Dates", () => {
     const result = isCholHaMoed(jewishDate);
     expect(result).toStrictEqual(true);
   });
-  
+
   it("should return false for Chol HaMoed on 15 Tishri 5785", () => {
     const jewishDate: BasicJewishDate = {
       day: 15,
@@ -71,7 +71,7 @@ describe("chol HaMoed Validation for Jewish Dates", () => {
     const result = isCholHaMoed(jewishDate);
     expect(result).toStrictEqual(false);
   });
-  
+
   it("should return true for Chol HaMoed on 16 Tishri 5785", () => {
     const jewishDate: BasicJewishDate = {
       day: 16,
@@ -81,7 +81,7 @@ describe("chol HaMoed Validation for Jewish Dates", () => {
     const result = isCholHaMoed(jewishDate);
     expect(result).toStrictEqual(true);
   });
-  
+
   it("should return true for Chol HaMoed on 17 Tishri 5785", () => {
     const jewishDate: BasicJewishDate = {
       day: 17,
@@ -91,7 +91,7 @@ describe("chol HaMoed Validation for Jewish Dates", () => {
     const result = isCholHaMoed(jewishDate);
     expect(result).toStrictEqual(true);
   });
-  
+
   it("should return true for Chol HaMoed on 18 Tishri 5785", () => {
     const jewishDate: BasicJewishDate = {
       day: 18,
@@ -101,7 +101,7 @@ describe("chol HaMoed Validation for Jewish Dates", () => {
     const result = isCholHaMoed(jewishDate);
     expect(result).toStrictEqual(true);
   });
-  
+
   it("should return true for Chol HaMoed on 20 Tishri 5785", () => {
     const jewishDate: BasicJewishDate = {
       day: 20,
@@ -111,7 +111,7 @@ describe("chol HaMoed Validation for Jewish Dates", () => {
     const result = isCholHaMoed(jewishDate);
     expect(result).toStrictEqual(true);
   });
-  
+
   it("should return false for Chol HaMoed on 21 Tishri 5785", () => {
     const jewishDate: BasicJewishDate = {
       day: 21,
