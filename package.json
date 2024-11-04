@@ -18,22 +18,23 @@
     "url": "git+https://github.com/Shmulik-Kravitz/jewish-holidays.git"
   },
   "scripts": {
-    "build": "tsup ./src/index.ts --dts --format esm,cjs",
+    "build": "yarn lint && tsup ./src/index.ts --dts --format esm,cjs",
     "test": "vitest --config ./config/vitest/vitest.config.ts  --coverage",
     "prepack": "yarn build",
-    "clean": "rimraf dist",
+    "lint": "yarn biome check",
+    "lint-fix": "yarn biome check --fix",
     "api": "yarn api-extractor run --local --verbose"
   },
   "dependencies": {
     "jewish-date": "^2.0.15"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@microsoft/api-extractor": "^7.47.11",
-    "@vitest/coverage-v8": "2.1.3",
-    "rimraf": "^6.0.1",
+    "@vitest/coverage-v8": "2.1.4",
     "tsup": "^8.3.5",
     "typescript": "^5.6.3",
-    "vitest": "^2.1.3"
+    "vitest": "^2.1.4"
   },
   "dependenciesMeta": {
     "@microsoft/api-extractor": {

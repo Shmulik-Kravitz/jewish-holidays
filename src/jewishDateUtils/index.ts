@@ -1,1 +1,1 @@
-export * from './jewishDateUtils'
+export * from "./jewishDateUtils";

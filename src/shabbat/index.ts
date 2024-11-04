@@ -1,1 +1,1 @@
-export * from './shabbat';
+export * from "./shabbat";

@@ -1,38 +1,37 @@
 // Copyright (c) Shmulik kravitz. All rights reserved. Licensed under the MIT license.
 
-import { BasicJewishDate, toJewishDate } from "jewish-date";
-import type { Holiday } from "../interfaces";
+import { type BasicJewishDate, toJewishDate } from "jewish-date";
 import { isHoliday } from "../holiday";
+import type { Holiday } from "../interfaces";
 import { isBasicJewishDate } from "../jewishDateUtils/jewishDateUtils";
 
 const getYomTovListIsrael = (): Holiday[] => {
-    const result: Holiday[] = [
-        { day: 1, monthName: "Tishri", name: 'Rosh Hashanah' },
-        { day: 2, monthName: "Tishri", name: 'Rosh Hashanah' },
-        { day: 10, monthName: "Tishri", name: 'Yom Kippur' },
-        { day: 15, monthName: "Tishri", name: 'Sukkot' },
-        { day: 22, monthName: "Tishri", name: 'Simchat Torah' },
+  const result: Holiday[] = [
+    { day: 1, monthName: "Tishri", name: "Rosh Hashanah" },
+    { day: 2, monthName: "Tishri", name: "Rosh Hashanah" },
+    { day: 10, monthName: "Tishri", name: "Yom Kippur" },
+    { day: 15, monthName: "Tishri", name: "Sukkot" },
+    { day: 22, monthName: "Tishri", name: "Simchat Torah" },
 
-        { day: 15, monthName: "Nisan", name: 'Pesach' },
-        { day: 21, monthName: "Nisan", name: 'Shevii Shel Pesach' },
+    { day: 15, monthName: "Nisan", name: "Pesach" },
+    { day: 21, monthName: "Nisan", name: "Shevii Shel Pesach" },
 
-        { day: 6, monthName: "Sivan", name: 'Shavuot' },
-
-    ];
-    return result;
+    { day: 6, monthName: "Sivan", name: "Shavuot" },
+  ];
+  return result;
 };
 
 const getYomTovListChutzLaaretzOnly = (): Holiday[] => {
-    const result: Holiday[] = [
-        { day: 16, monthName: "Tishri", name: 'Sukkot' },
-        { day: 23, monthName: "Tishri", name: 'Simchat Torah' },
+  const result: Holiday[] = [
+    { day: 16, monthName: "Tishri", name: "Sukkot" },
+    { day: 23, monthName: "Tishri", name: "Simchat Torah" },
 
-        { day: 16, monthName: "Nisan", name: 'Pesach' },
-        { day: 22, monthName: "Nisan", name: 'Pesach Shel Pesach' },
+    { day: 16, monthName: "Nisan", name: "Pesach" },
+    { day: 22, monthName: "Nisan", name: "Pesach Shel Pesach" },
 
-        { day: 7, monthName: "Sivan", name: 'Shavuot' },
-    ];
-    return result;
+    { day: 7, monthName: "Sivan", name: "Shavuot" },
+  ];
+  return result;
 };
 
 /**
@@ -47,24 +46,29 @@ const getYomTovListChutzLaaretzOnly = (): Holiday[] => {
  * @param isChutzLaaretz - A boolean indicating whether to check against Yom Tov dates
  *   observed in Chutz Laaretz. Defaults to `false`, meaning it checks only for Israeli holidays.
  *
- * @returns  Returns `true` if the given date is a Yom Tov, 
+ * @returns  Returns `true` if the given date is a Yom Tov,
  *   and `false` otherwise.
  *
  * @example
  * const isRoshHashanah = isYomTov(new Date(2024, 9, 3)); // true
  * const isSukkotInChutzLaaretz = isYomTov(\{ day: 16, monthName: "Tishri", year: 5785 \}, true); // true
- * 
+ *
  * @public
  */
-export const isYomTov = (date: Date | BasicJewishDate, isChutzLaaretz: boolean = false): boolean => {
-    let jewishDate: BasicJewishDate;
-    if (isBasicJewishDate(date)) {
-        jewishDate = date;
-    } else {
-        jewishDate = toJewishDate(date);
-        
-    }
-    const yomTovList: Holiday[] = [...getYomTovListIsrael(), ...(isChutzLaaretz ? getYomTovListChutzLaaretzOnly() : [])]
+export const isYomTov = (
+  date: Date | BasicJewishDate,
+  isChutzLaaretz: boolean = false,
+): boolean => {
+  let jewishDate: BasicJewishDate;
+  if (isBasicJewishDate(date)) {
+    jewishDate = date;
+  } else {
+    jewishDate = toJewishDate(date);
+  }
+  const yomTovList: Holiday[] = [
+    ...getYomTovListIsrael(),
+    ...(isChutzLaaretz ? getYomTovListChutzLaaretzOnly() : []),
+  ];
 
-    return isHoliday(jewishDate, yomTovList)
+  return isHoliday(jewishDate, yomTovList);
 };
