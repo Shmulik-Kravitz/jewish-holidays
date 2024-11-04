@@ -50,10 +50,8 @@
  * This package is licensed under the MIT License. See the `LICENSE` file for more details.
  */
 
-
-export * from './holiday';
-export * from './shabbat';
-export * from './yomTov';
-export * from './interfaces';
-
-
+export * from "./cholHaMoed";
+export * from "./holiday";
+export * from "./interfaces";
+export * from "./shabbat";
+export * from "./yomTov";

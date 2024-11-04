@@ -15,6 +15,9 @@ export interface Holiday {
 }
 
 // @public
+export const isCholHaMoed: (date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => boolean;
+
+// @public
 export const isHoliday: (jewishDate: BasicJewishDate, holidayList: Holiday[]) => boolean;
 
 // @public
