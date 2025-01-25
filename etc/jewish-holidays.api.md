@@ -15,10 +15,16 @@ export interface Holiday {
 }
 
 // @public
+export const isChanukah: (date: Date | BasicJewishDate) => boolean;
+
+// @public
 export const isCholHaMoed: (date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => boolean;
 
 // @public
 export const isErevShabbat: (date: Date | BasicJewishDate) => boolean;
+
+// @public
+export const isErevYomTov: (date: Date | BasicJewishDate) => boolean;
 
 // @public
 export const isHoliday: (jewishDate: BasicJewishDate, holidayList: Holiday[]) => boolean;

@@ -2,7 +2,7 @@ import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
 import { isYomTov } from "../../src/yomTov";
 
-describe("Yom Tov Validation for Chutz Laaretz with Jewish dates", () => {
+describe("Yom Tov validation for Chutz Laaretz with Jewish dates", () => {
   it("should return true for Sukkot on 16 Tishri 5785 in Chutz Laaretz", () => {
     const jewishDate: BasicJewishDate = {
       day: 16,

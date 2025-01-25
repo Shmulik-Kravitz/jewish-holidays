@@ -2,7 +2,7 @@ import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
 import { isShabbat } from "../../src/shabbat";
 
-describe("Shabbat Validation", () => {
+describe("Shabbat validation", () => {
   it("should return true for a Gregorian Saturday date", () => {
     const saturdayDate = new Date(2023, 9, 21); // A Saturday
     expect(isShabbat(saturdayDate)).toBe(true);

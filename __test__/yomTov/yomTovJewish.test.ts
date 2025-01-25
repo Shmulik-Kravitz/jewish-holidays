@@ -2,7 +2,7 @@ import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
 import { isYomTov } from "../../src/yomTov";
 
-describe("Yom Tov Validation for Jewish Dates", () => {
+describe("Yom Tov validation for Jewish Dates", () => {
   it("should return true for Rosh Hashanah on 1 Tishri 5785", () => {
     const jewishDate: BasicJewishDate = {
       day: 1,

@@ -2,7 +2,7 @@ import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
 import { isCholHaMoed } from "../../src/cholHaMoed";
 
-describe("chol HaMoed Validation by Gregorian Date", () => {
+describe("chol HaMoed validation by Gregorian Date", () => {
   it("should return true for Chol HaMoed on October 18, 2024 ", () => {
     const result = isCholHaMoed(new Date(2024, 9, 18));
     expect(result).toStrictEqual(true);

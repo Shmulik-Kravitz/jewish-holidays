@@ -2,7 +2,7 @@ import { type BasicJewishDate, toGregorianDate } from "jewish-date";
 import { isBasicJewishDate } from "../jewishDateUtils";
 
 /**
- * Checks if the given date is Erev Shabbat (the day before Shabbat).
+ * Determines whether a given date is Erev Shabbat (the day before Shabbat).
  *
  * @param date - The date to check, which can be a JavaScript Date object
  *               or a BasicJewishDate.

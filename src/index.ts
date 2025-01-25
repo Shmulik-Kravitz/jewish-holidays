@@ -53,5 +53,6 @@
 export * from "./cholHaMoed";
 export * from "./holiday";
 export * from "./interfaces";
+export * from "./chanukah";
 export * from "./shabbat";
 export * from "./yomTov";

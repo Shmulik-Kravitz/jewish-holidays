@@ -2,7 +2,7 @@ import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
 import { isErevShabbat } from "../../src/shabbat";
 
-describe("Erev Shabbat Validation", () => {
+describe("Erev Shabbat validation", () => {
   it("should handle invalid dates gracefully", () => {
     const invalidDate = new Date("invalid-date");
     expect(isErevShabbat(invalidDate)).toBe(false); // Assuming the function handles this gracefully
