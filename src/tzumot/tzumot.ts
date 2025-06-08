@@ -19,11 +19,14 @@ const getTzomotList = (): Holiday[] => {
   ];
 };
 
-
 const shouldDelayFast = (jewishDate: BasicJewishDate): boolean => {
   // These fasts are delayed when they fall on Shabbat
   const delayableFasts: Holiday[] = [
-    { day: 17, monthName: JewishMonth.Tammuz, name: "Shiva Asar BeTamuz (delayed)" },
+    {
+      day: 17,
+      monthName: JewishMonth.Tammuz,
+      name: "Shiva Asar BeTamuz (delayed)",
+    },
     { day: 9, monthName: JewishMonth.Av, name: "Tisha BeAv (delayed)" },
     { day: 13, monthName: JewishMonth.Adar, name: "Taanit Esther (delayed)" },
     { day: 13, monthName: JewishMonth.AdarII, name: "Taanit Esther (delayed)" },
@@ -33,7 +36,8 @@ const shouldDelayFast = (jewishDate: BasicJewishDate): boolean => {
   return (
     isShabbat(jewishDate) &&
     delayableFasts.some(
-      (fast) => fast.day === jewishDate.day && fast.monthName === jewishDate.monthName
+      (fast) =>
+        fast.day === jewishDate.day && fast.monthName === jewishDate.monthName,
     )
   );
 };
@@ -67,9 +71,12 @@ export const isTzom = (date: Date | BasicJewishDate): boolean => {
   }
 
   const tzomotList = getTzomotList();
-  
+
   // Check if it's a regular fast day
-  if (isDateInHolidayList(jewishDate, tzomotList) && (!isShabbat(jewishDate) || !shouldDelayFast(jewishDate))) {
+  if (
+    isDateInHolidayList(jewishDate, tzomotList) &&
+    (!isShabbat(jewishDate) || !shouldDelayFast(jewishDate))
+  ) {
     return true;
   }
 

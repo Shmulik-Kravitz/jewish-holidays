@@ -8,11 +8,10 @@ describe("Tzomot validation by Gregorian Date", () => {
     expect(result).toStrictEqual(true);
   });
 
-    it("should recognize September 25, 2025 as Tzom Gdalia", () => {
+  it("should recognize September 25, 2025 as Tzom Gdalia", () => {
     const result = isTzom(new Date(2025, 8, 25));
     expect(result).toStrictEqual(true);
   });
-
 
   it("should recognize October 12, 2024 as Yom Kippur", () => {
     const result = isTzom(new Date(2024, 9, 12));
@@ -37,7 +36,7 @@ describe("Tzomot validation by Jewish Date", () => {
     expect(result).toStrictEqual(false);
   });
 
-   it("should recognize 4th of Tishri as Tzom Gdalia on sunday", () => {
+  it("should recognize 4th of Tishri as Tzom Gdalia on sunday", () => {
     const jewishDate = { day: 4, monthName: JewishMonth.Tishri, year: 5785 };
     const result = isTzom(jewishDate);
     expect(result).toStrictEqual(true);
