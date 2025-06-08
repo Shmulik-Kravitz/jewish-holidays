@@ -1,6 +1,6 @@
 import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
-import { isErevYomTov } from "../../src/yomTov";
+import { isErevYomTov } from ".";
 
 describe("Yom Tov validation for Jewish Dates", () => {
   it("should return true for Erev Rosh Hashanah on 29 Elul 5785", () => {

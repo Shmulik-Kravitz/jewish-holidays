@@ -1,6 +1,6 @@
 import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
-import { isChanukah } from "../../src/chanukah";
+import { isChanukah } from ".";
 
 describe("Validation of Chanukah using Gregorian dates", () => {
   it("should return true for Chanukah on December 26, 2024 ", () => {

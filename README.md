@@ -64,20 +64,79 @@ Determines if the given date is Shabbat.
 - **date**: A JavaScript Date object or a BasicJewishDate object.
 
 
-<br />
-<details markdown="1">
-<summary>Click for more</summary>
+
+### `isErevShabbat`
 
 ```typescript
-export declare const isErevShabbat: (date: Date | BasicJewishDate) => boolean;
-
-export declare const isErevYomTov: (date: Date | BasicJewishDate) => boolean;
-
-export declare const isCholHaMoed: (date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => boolean;
-
-export declare const isChanukah: (date: Date | BasicJewishDate) => boolean;
+isErevShabbat(date: Date | BasicJewishDate) => boolean
 ```
-</details>
+
+Determines if the given date is Erev Shabbat (Friday).
+
+- **date**: A JavaScript Date object or a BasicJewishDate object.
+
+### `isErevYomTov`
+
+```typescript
+isErevYomTov(date: Date | BasicJewishDate) => boolean
+```
+
+Determines if the given date is Erev Yom Tov (the day before a Jewish holiday).
+
+- **date**: A JavaScript Date object or a BasicJewishDate object.
+
+### `isCholHaMoed`
+
+```typescript
+isCholHaMoed(date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => boolean
+```
+
+Determines if the given date is Chol HaMoed (the intermediate days of Passover or Sukkot).
+
+- **date**: A JavaScript Date object or a BasicJewishDate object.
+- **isChutzLaaretz**: *(optional)* A boolean indicating if the calculation should consider diaspora holidays.
+
+### `isRoshChodesh`
+
+```typescript
+isRoshChodesh(date: Date | BasicJewishDate) => boolean
+```
+
+Determines if the given date is Rosh Chodesh (the beginning of a new Jewish month).
+
+- **date**: A JavaScript Date object or a BasicJewishDate object.
+
+### `isChanukah`
+
+```typescript
+isChanukah(date: Date | BasicJewishDate) => boolean
+```
+
+Determines if the given date is during Chanukah.
+
+- **date**: A JavaScript Date object or a BasicJewishDate object.
+
+### `isPurim`
+
+```typescript
+isPurim(date: Date | BasicJewishDate) => boolean
+```
+
+Determines if the given date is Purim.
+
+- **date**: A JavaScript Date object or a BasicJewishDate object.
+
+### `isTzom`
+
+```typescript
+isTzom(date: Date | BasicJewishDate) => boolean
+```
+
+Determines if the given date is a Jewish fast day (Tzom).
+
+- **date**: A JavaScript Date object or a BasicJewishDate object.
+
+
 
 ## License
 

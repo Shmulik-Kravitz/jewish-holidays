@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isErevYomTov } from "../../src/yomTov";
+import { isErevYomTov } from ".";
 
 describe("Yom Tov validation by Gregorian Date", () => {
   it("should recognize October 2, 2024 as Erev Rosh Hashanah", () => {

@@ -1,5 +1,5 @@
 import { type BasicJewishDate, toJewishDate } from "jewish-date";
-import { isHoliday } from "../holiday";
+import { isDateInHolidayList } from "../holiday";
 import type { Holiday } from "../interfaces";
 import { isBasicJewishDate } from "../jewishDateUtils";
 
@@ -67,5 +67,5 @@ export const isCholHaMoed = (
   const cholHaMoed = isChutzLaaretz
     ? getCholHaMoedChutzLaaretz()
     : getCholHaMoedIsrael();
-  return isHoliday(jewishDate, cholHaMoed);
+  return isDateInHolidayList(jewishDate, cholHaMoed);
 };

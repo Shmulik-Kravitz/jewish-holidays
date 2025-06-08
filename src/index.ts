@@ -56,3 +56,5 @@ export * from "./interfaces";
 export * from "./chanukah";
 export * from "./shabbat";
 export * from "./yomTov";
+export * from "./purim";
+export * from "./tzumot";

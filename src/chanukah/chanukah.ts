@@ -5,7 +5,7 @@ import {
   calcDaysInMonth,
   toJewishDate,
 } from "jewish-date";
-import { isHoliday } from "../holiday";
+import { isDateInHolidayList } from "../holiday";
 import type { Holiday } from "../interfaces";
 import { isBasicJewishDate } from "../jewishDateUtils";
 
@@ -54,5 +54,5 @@ export const isChanukah = (date: Date | BasicJewishDate): boolean => {
   }
 
   const chanukahList = getChanukahList(jewishDate.year);
-  return isHoliday(jewishDate, chanukahList);
+  return isDateInHolidayList(jewishDate, chanukahList);
 };

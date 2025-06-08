@@ -1,6 +1,6 @@
 import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
-import { isChanukah } from "../../src/chanukah";
+import { isChanukah } from ".";
 
 describe("Validation of Chanukah using Jewish dates", () => {
   it("should return false for Chanukah on 24 Kislev 5785", () => {

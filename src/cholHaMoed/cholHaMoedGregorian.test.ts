@@ -1,6 +1,5 @@
-import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
-import { isCholHaMoed } from "../../src/cholHaMoed";
+import { isCholHaMoed } from ".";
 
 describe("chol HaMoed validation by Gregorian Date", () => {
   it("should return true for Chol HaMoed on October 18, 2024 ", () => {

@@ -1,6 +1,6 @@
 import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
-import { isErevShabbat } from "../../src/shabbat";
+import { isErevShabbat } from ".";
 
 describe("Erev Shabbat validation", () => {
   it("should handle invalid dates gracefully", () => {

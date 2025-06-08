@@ -1,6 +1,6 @@
 import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
-import { isCholHaMoed } from "../../src/cholHaMoed";
+import { isCholHaMoed } from ".";
 
 describe("chol HaMoed validation for Chutz Laaretz Jewish dates", () => {
   it("should return false for Chol HaMoed on 15 Tishri 5785", () => {

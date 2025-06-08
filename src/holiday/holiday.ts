@@ -4,10 +4,10 @@ import { type BasicJewishDate, toJewishDate } from "jewish-date";
 import type { Holiday } from "../interfaces";
 
 /**
- * Return if the date exists in holyday list
+ * Checks if a given Jewish date exists in a holiday list
  * @public
  */
-export const isHoliday = (
+export const isDateInHolidayList = (
   jewishDate: BasicJewishDate,
   holidayList: Holiday[],
 ): boolean => {

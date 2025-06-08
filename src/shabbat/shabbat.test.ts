@@ -1,6 +1,6 @@
 import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
-import { isShabbat } from "../../src/shabbat";
+import { isShabbat } from ".";
 
 describe("Shabbat validation", () => {
   it("should return true for a Gregorian Saturday date", () => {

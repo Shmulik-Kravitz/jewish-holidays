@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.2
+- Added the following methods:
+  - `isTzom` - Determines whether a given date is a Jewish fast day (Tzom).
+  - `isPurim` - Determines whether a given date is Purim (including both Adar in regular year and Adar II in leap year).
+  - `isRoshChodesh` - Determines whether a given date is Rosh Chodesh (the beginning of a new Hebrew month).
+- Add support for delayed fasts (Tzomot Nidchim)
+- Add Taanit Esther support for both Adar in regular year and Adar II in leap year
+- Improve test coverage for Jewish holidays
+- Standardize test formats across all holiday types
+
+## 1.2.1
+
+- Add support for custom holiday definitions.
+- Improve documentation for all methods.
+- Refactor date handling for better accuracy.
+- Update dependencies to latest versions.
+
 ## 1.1.0
 
 - Added the following methods:

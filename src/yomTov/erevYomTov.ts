@@ -1,7 +1,7 @@
 // Copyright (c) Shmulik kravitz. All rights reserved. Licensed under the MIT license.
 
 import { type BasicJewishDate, toJewishDate } from "jewish-date";
-import { isHoliday } from "../holiday";
+import { isDateInHolidayList } from "../holiday";
 import type { Holiday } from "../interfaces";
 import { isBasicJewishDate } from "../jewishDateUtils/jewishDateUtils";
 
@@ -47,5 +47,5 @@ export const isErevYomTov = (date: Date | BasicJewishDate): boolean => {
   }
   const yomTovList: Holiday[] = [...getErevYomTovList()];
 
-  return isHoliday(jewishDate, yomTovList);
+  return isDateInHolidayList(jewishDate, yomTovList);
 };
