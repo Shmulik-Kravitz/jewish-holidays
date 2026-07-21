@@ -8,6 +8,33 @@ import { BasicJewishDate } from 'jewish-date';
 import { JewishMonthType } from 'jewish-date';
 
 // @public
+export interface DateInfo {
+    holidays: string[];
+    isChanukah: boolean;
+    isCholHaMoed: boolean;
+    isErevShabbat: boolean;
+    isErevYomTov: boolean;
+    isPurim: boolean;
+    isRoshChodesh: boolean;
+    isShabbat: boolean;
+    isTzom: boolean;
+    isYomTov: boolean;
+    jewishDate: BasicJewishDate;
+}
+
+// @public
+export const getDateInfo: (date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => DateInfo;
+
+// @public
+export const getHolidaysForDate: (jewishDate: BasicJewishDate, holidayList: Holiday[]) => Holiday[];
+
+// @public
+export const getTodayInfo: (isChutzLaaretz?: boolean) => DateInfo;
+
+// @public
+export const getYomTovList: (isChutzLaaretz?: boolean) => Holiday[];
+
+// @public
 export interface Holiday {
     day: number;
     monthName: JewishMonthType;
@@ -21,16 +48,22 @@ export const isChanukah: (date: Date | BasicJewishDate) => boolean;
 export const isCholHaMoed: (date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => boolean;
 
 // @public
+export const isDateInHolidayList: (jewishDate: BasicJewishDate, holidayList: Holiday[]) => boolean;
+
+// @public
 export const isErevShabbat: (date: Date | BasicJewishDate) => boolean;
 
 // @public
 export const isErevYomTov: (date: Date | BasicJewishDate) => boolean;
 
 // @public
-export const isHoliday: (jewishDate: BasicJewishDate, holidayList: Holiday[]) => boolean;
+export const isPurim: (date: Date | BasicJewishDate) => boolean;
 
 // @public
 export const isShabbat: (date: Date | BasicJewishDate) => boolean;
+
+// @public
+export const isTzom: (date: Date | BasicJewishDate) => boolean;
 
 // @public
 export const isYomTov: (date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => boolean;

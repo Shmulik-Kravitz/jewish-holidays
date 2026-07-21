@@ -35,6 +35,24 @@ const getYomTovListChutzLaaretzOnly = (): Holiday[] => {
 };
 
 /**
+ * Returns the list of Yom Tov holidays, optionally including the additional
+ * days observed in Chutz Laaretz (the diaspora).
+ *
+ * @param isChutzLaaretz - When `true`, appends the Chutz Laaretz-only holidays
+ *   to the Israeli list. Defaults to `false`.
+ *
+ * @returns The combined list of Yom Tov holidays.
+ *
+ * @public
+ */
+export const getYomTovList = (isChutzLaaretz: boolean = false): Holiday[] => {
+  return [
+    ...getYomTovListIsrael(),
+    ...(isChutzLaaretz ? getYomTovListChutzLaaretzOnly() : []),
+  ];
+};
+
+/**
  * Determines if a given date is a Yom Tov (Jewish holiday).
  *
  * This function accepts either a Gregorian date or a BasicJewishDate object
@@ -65,10 +83,5 @@ export const isYomTov = (
   } else {
     jewishDate = toJewishDate(date);
   }
-  const yomTovList: Holiday[] = [
-    ...getYomTovListIsrael(),
-    ...(isChutzLaaretz ? getYomTovListChutzLaaretzOnly() : []),
-  ];
-
-  return isDateInHolidayList(jewishDate, yomTovList);
+  return isDateInHolidayList(jewishDate, getYomTovList(isChutzLaaretz));
 };
