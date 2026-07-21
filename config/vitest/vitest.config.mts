@@ -7,7 +7,7 @@ export default defineConfig({
     globals: true,
     watch: false,
 
-    globalSetup: './config/vitest/vitest.setup.ts',
+    globalSetup: './config/vitest/vitest.setup.mts',
     coverage: {
       reporter: ['text', 'json', 'html', 'cobertura'],
       exclude: [

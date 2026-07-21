@@ -1,7 +1,7 @@
 import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
-import { getDateInfo } from ".";
 import type { DateInfo } from "../interfaces";
+import { getDateInfo } from ".";
 
 describe("getDateInfo by Jewish Date", () => {
   it("should summarize 16 Tishri 5785 as Chol HaMoed in Israel", () => {

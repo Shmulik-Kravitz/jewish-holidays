@@ -1,4 +1,3 @@
-import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
 import { isChanukah } from ".";
 

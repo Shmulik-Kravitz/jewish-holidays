@@ -21,24 +21,27 @@
     "url": "git+https://github.com/Shmulik-Kravitz/jewish-holidays.git"
   },
   "scripts": {
-    "build": "pnpm lint && tsdown",
+    "build": "pnpm typecheck && pnpm lint && tsdown",
     "dev": "tsdown --watch",
-    "test": "vitest --config ./config/vitest/vitest.config.ts  --coverage",
+    "test": "vitest --config ./config/vitest/vitest.config.mts --coverage",
     "prepack": "pnpm build",
+    "typecheck": "tsc --noEmit",
     "lint": "biome check",
     "lint-fix": "biome check --fix",
+    "format": "biome format --write .",
     "api": "api-extractor run --local --verbose"
   },
   "dependencies": {
-    "jewish-date": "^2.0.20"
+    "jewish-date": "^2.0.23"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@microsoft/api-extractor": "^7.52.8",
-    "@vitest/coverage-v8": "3.2.2",
+    "@biomejs/biome": "^2.5.5",
+    "@microsoft/api-extractor": "^7.58.12",
+    "@types/node": "^26.1.1",
+    "@vitest/coverage-v8": "^4.1.10",
     "tsdown": "^0.22.13",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.2"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   },
   "files": [
     "dist"

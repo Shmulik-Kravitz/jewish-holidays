@@ -50,12 +50,12 @@
  * This package is licensed under the MIT License. See the `LICENSE` file for more details.
  */
 
+export * from "./chanukah";
 export * from "./cholHaMoed";
 export * from "./dateInfo";
 export * from "./holiday";
 export * from "./interfaces";
-export * from "./chanukah";
-export * from "./shabbat";
-export * from "./yomTov";
 export * from "./purim";
+export * from "./shabbat";
 export * from "./tzumot";
+export * from "./yomTov";

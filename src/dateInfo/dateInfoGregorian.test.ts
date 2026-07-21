@@ -1,7 +1,7 @@
 import { toJewishDate } from "jewish-date";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { getDateInfo, getTodayInfo } from ".";
 import type { DateInfo } from "../interfaces";
+import { getDateInfo, getTodayInfo } from ".";
 
 describe("getDateInfo by Gregorian Date", () => {
   it("should summarize October 3, 2024 as Rosh Hashanah", () => {

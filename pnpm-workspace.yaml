@@ -4,4 +4,14 @@ minimumReleaseAge: 1440
 # Versions allowed through the cooldown above. Prune entries once they age past
 # minimumReleaseAge; they are only needed while a version is still fresh.
 minimumReleaseAgeExclude:
+  - '@biomejs/biome@2.5.5'
+  - '@biomejs/cli-darwin-arm64@2.5.5'
+  - '@biomejs/cli-darwin-x64@2.5.5'
+  - '@biomejs/cli-linux-arm64-musl@2.5.5'
+  - '@biomejs/cli-linux-arm64@2.5.5'
+  - '@biomejs/cli-linux-x64-musl@2.5.5'
+  - '@biomejs/cli-linux-x64@2.5.5'
+  - '@biomejs/cli-win32-arm64@2.5.5'
+  - '@biomejs/cli-win32-x64@2.5.5'
+  - '@microsoft/api-extractor@7.58.12'
   - tsdown@0.22.13

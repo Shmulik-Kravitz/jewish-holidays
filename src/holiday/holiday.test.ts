@@ -1,7 +1,7 @@
 import type { BasicJewishDate } from "jewish-date";
 import { describe, expect, it } from "vitest";
-import { isDateInHolidayList } from ".";
 import type { Holiday } from "../interfaces";
+import { isDateInHolidayList } from ".";
 
 describe("Holiday validation", () => {
   it("should return false when given null as BasicJewishDate and holidayList is empty", () => {

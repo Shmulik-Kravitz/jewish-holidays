@@ -15,9 +15,9 @@ export default function filterConsole(excludePatterns: any, options?: any) {
 	};
 
 	const {console: consoleObject, methods} = options;
-	const originalMethods = methods.map(method => consoleObject[method]);
+	const originalMethods = methods.map((method: string) => consoleObject[method]);
 
-	const check = string => {
+	const check = (string: string) => {
 		for (const pattern of excludePatterns) {
 			if (typeof pattern === 'string') {
 				if (string.includes(pattern)) {
@@ -38,7 +38,7 @@ export default function filterConsole(excludePatterns: any, options?: any) {
 	for (const method of methods) {
 		const originalMethod = consoleObject[method];
 
-		consoleObject[method] = (...args) => {
+		consoleObject[method] = (...args: unknown[]) => {
 			if (check(format(...args))) {
 				return;
 			}

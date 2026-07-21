@@ -1,4 +1,4 @@
-import { JewishMonth, toJewishDate } from "jewish-date";
+import { JewishMonth } from "jewish-date";
 import { describe, expect, it } from "vitest";
 import { isTzom } from ".";
 
