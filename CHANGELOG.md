@@ -2,7 +2,7 @@
 
 ## 1.3.0
 - Added the following methods:
-  - `getDateInfo` - Returns a full summary of a given date (the Jewish date, every holiday/observance flag, and any matched Yom Tov name(s)).
+  - `getDateInfo` - Returns a full summary of a given date (the Jewish date, every holiday/observance flag, and the name(s) of any matched observance).
   - `getTodayInfo` - Convenience wrapper that returns `getDateInfo` for today's date.
 - Added the `DateInfo` interface describing the aggregated result.
 

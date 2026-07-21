@@ -5,7 +5,7 @@ import type { Holiday } from "../interfaces";
 
 /**
  * Returns every holiday in a holiday list that falls on a given Jewish date
- * @public
+ * @internal
  */
 export const getHolidaysForDate = (
   jewishDate: BasicJewishDate,

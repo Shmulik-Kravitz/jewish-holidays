@@ -56,15 +56,17 @@ check in a single object.
 
 The returned `DateInfo` object contains the normalized `jewishDate`, the boolean
 flags `isYomTov`, `isErevYomTov`, `isCholHaMoed`, `isShabbat`, `isErevShabbat`,
-`isRoshChodesh`, `isChanukah`, `isPurim`, `isTzom`, and `holidays` (the name(s)
-of any matched Yom Tov, or an empty array).
+`isRoshChodesh`, `isChanukah`, `isPurim`, `isTzom`, and `holidays` — the name(s)
+of any matched observance (the specific Yom Tov name(s) plus a label for each of
+`Chol HaMoed`, `Rosh Chodesh`, `Chanukah`, `Purim`, and `Tzom`), or an empty
+array.
 
 ```javascript
 import { getDateInfo } from 'jewish-holidays';
 
 const info = getDateInfo(new Date(2024, 9, 3)); // Rosh Hashanah
 console.log(info.isYomTov); // true
-console.log(info.holidays); // ["Rosh Hashanah"]
+console.log(info.holidays); // ["Rosh Hashanah", "Rosh Chodesh"]
 ```
 
 ### `getTodayInfo`

@@ -5,9 +5,9 @@ import { isChanukah } from "../chanukah";
 import { isCholHaMoed } from "../cholHaMoed";
 import { getHolidaysForDate } from "../holiday";
 import type { DateInfo } from "../interfaces";
-import { isBasicJewishDate } from "../jewishDateUtils/jewishDateUtils";
+import { isBasicJewishDate } from "../jewishDateUtils";
 import { isPurim } from "../purim";
-import { isRoshChodesh } from "../roshChodesh/roshChodesh";
+import { isRoshChodesh } from "../roshChodesh";
 import { isErevShabbat, isShabbat } from "../shabbat";
 import { isTzom } from "../tzumot";
 import { getYomTovList, isErevYomTov, isYomTov } from "../yomTov";
@@ -17,7 +17,7 @@ import { getYomTovList, isErevYomTov, isYomTov } from "../yomTov";
  *
  * This function accepts either a Gregorian date or a BasicJewishDate object,
  * normalizes it to a Jewish date, and aggregates every holiday/observance flag
- * the package can determine, along with the name(s) of any matched Yom Tov.
+ * the package can determine, along with the name(s) of any matched holiday.
  *
  * @param date - The date to summarize, which can be either:
  *   - A Gregorian date object, or
@@ -31,7 +31,7 @@ import { getYomTovList, isErevYomTov, isYomTov } from "../yomTov";
  * @example
  * const info = getDateInfo(new Date(2024, 9, 3)); // Rosh Hashanah
  * console.log(info.isYomTov); // true
- * console.log(info.holidays); // ["Rosh Hashanah"]
+ * console.log(info.holidays); // ["Rosh Hashanah", "Rosh Chodesh"]
  *
  * @public
  */
@@ -43,22 +43,37 @@ export const getDateInfo = (
     ? date
     : toJewishDate(date);
 
-  const holidays = getHolidaysForDate(
+  const isCholHaMoedResult = isCholHaMoed(jewishDate, isChutzLaaretz);
+  const isRoshChodeshResult = isRoshChodesh(jewishDate);
+  const isChanukahResult = isChanukah(jewishDate);
+  const isPurimResult = isPurim(jewishDate);
+  const isTzomResult = isTzom(jewishDate);
+
+  const yomTovNames = getHolidaysForDate(
     jewishDate,
     getYomTovList(isChutzLaaretz),
   ).map((holiday) => holiday.name);
+
+  const holidays: string[] = [
+    ...yomTovNames,
+    ...(isCholHaMoedResult ? ["Chol HaMoed"] : []),
+    ...(isRoshChodeshResult ? ["Rosh Chodesh"] : []),
+    ...(isChanukahResult ? ["Chanukah"] : []),
+    ...(isPurimResult ? ["Purim"] : []),
+    ...(isTzomResult ? ["Tzom"] : []),
+  ];
 
   return {
     jewishDate,
     isYomTov: isYomTov(jewishDate, isChutzLaaretz),
     isErevYomTov: isErevYomTov(jewishDate),
-    isCholHaMoed: isCholHaMoed(jewishDate, isChutzLaaretz),
+    isCholHaMoed: isCholHaMoedResult,
     isShabbat: isShabbat(jewishDate),
     isErevShabbat: isErevShabbat(jewishDate),
-    isRoshChodesh: isRoshChodesh(jewishDate),
-    isChanukah: isChanukah(jewishDate),
-    isPurim: isPurim(jewishDate),
-    isTzom: isTzom(jewishDate),
+    isRoshChodesh: isRoshChodeshResult,
+    isChanukah: isChanukahResult,
+    isPurim: isPurimResult,
+    isTzom: isTzomResult,
     holidays,
   };
 };

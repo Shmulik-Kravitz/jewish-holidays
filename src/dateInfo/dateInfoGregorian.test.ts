@@ -17,7 +17,7 @@ describe("getDateInfo by Gregorian Date", () => {
       isChanukah: false,
       isPurim: false,
       isTzom: false,
-      holidays: ["Rosh Hashanah"],
+      holidays: ["Rosh Hashanah", "Rosh Chodesh"],
     };
     expect(getDateInfo(date)).toStrictEqual(expected);
   });
@@ -53,7 +53,7 @@ describe("getDateInfo by Gregorian Date", () => {
       isChanukah: false,
       isPurim: false,
       isTzom: true,
-      holidays: [],
+      holidays: ["Tzom"],
     };
     expect(getDateInfo(date)).toStrictEqual(expected);
   });

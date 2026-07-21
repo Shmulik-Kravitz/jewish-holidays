@@ -43,7 +43,7 @@ const getYomTovListChutzLaaretzOnly = (): Holiday[] => {
  *
  * @returns The combined list of Yom Tov holidays.
  *
- * @public
+ * @internal
  */
 export const getYomTovList = (isChutzLaaretz: boolean = false): Holiday[] => {
   return [

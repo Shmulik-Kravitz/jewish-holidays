@@ -25,13 +25,17 @@ export interface DateInfo {
 // @public
 export const getDateInfo: (date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => DateInfo;
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "getHolidaysForDate" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export const getHolidaysForDate: (jewishDate: BasicJewishDate, holidayList: Holiday[]) => Holiday[];
 
 // @public
 export const getTodayInfo: (isChutzLaaretz?: boolean) => DateInfo;
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "getYomTovList" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export const getYomTovList: (isChutzLaaretz?: boolean) => Holiday[];
 
 // @public

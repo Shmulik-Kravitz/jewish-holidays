@@ -104,11 +104,14 @@ export interface DateInfo {
   isTzom: boolean;
 
   /**
-   * The name(s) of any Yom Tov that falls on the date.
+   * The name(s) of any holiday or observance that falls on the date.
    *
    * @remarks
-   * Empty when the date is not a Yom Tov. May contain more than one entry when
-   * multiple observances share the same date.
+   * Includes the specific Yom Tov name(s) (e.g. `"Rosh Hashanah"`, `"Sukkot"`)
+   * plus a label for each of the other matched observances: `"Chol HaMoed"`,
+   * `"Rosh Chodesh"`, `"Chanukah"`, `"Purim"`, and `"Tzom"`. Empty when none
+   * apply. May contain more than one entry when a date carries multiple
+   * observances (e.g. `["Rosh Hashanah", "Rosh Chodesh"]`).
    */
   holidays: string[];
 }

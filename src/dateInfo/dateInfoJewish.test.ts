@@ -21,7 +21,7 @@ describe("getDateInfo by Jewish Date", () => {
       isChanukah: false,
       isPurim: false,
       isTzom: false,
-      holidays: [],
+      holidays: ["Chol HaMoed"],
     };
     expect(getDateInfo(jewishDate)).toStrictEqual(expected);
   });
@@ -65,7 +65,7 @@ describe("getDateInfo by Jewish Date", () => {
       isChanukah: true,
       isPurim: false,
       isTzom: false,
-      holidays: [],
+      holidays: ["Chanukah"],
     };
     expect(getDateInfo(jewishDate)).toStrictEqual(expected);
   });
@@ -87,7 +87,7 @@ describe("getDateInfo by Jewish Date", () => {
       isChanukah: false,
       isPurim: true,
       isTzom: false,
-      holidays: [],
+      holidays: ["Purim"],
     };
     expect(getDateInfo(jewishDate)).toStrictEqual(expected);
   });
@@ -109,7 +109,7 @@ describe("getDateInfo by Jewish Date", () => {
       isChanukah: false,
       isPurim: false,
       isTzom: false,
-      holidays: ["Rosh Hashanah"],
+      holidays: ["Rosh Hashanah", "Rosh Chodesh"],
     };
     expect(getDateInfo(jewishDate)).toStrictEqual(expected);
   });
