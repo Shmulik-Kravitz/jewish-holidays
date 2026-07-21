@@ -10,21 +10,24 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v7
-    
+
+    - name: Use pnpm
+      uses: pnpm/action-setup@v4
+
     - name: Use Node.js
       uses: actions/setup-node@v7
       with:
         node-version: 24
-        cache: 'yarn'
+        cache: 'pnpm'
 
     - name: Install
-      run: yarn
+      run: pnpm install --frozen-lockfile
 
     - name: Build
-      run: yarn build
+      run: pnpm build
 
     - name: Test
-      run: yarn test
+      run: pnpm test
 
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
@@ -65,16 +68,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      
+
+      - name: Use pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Use Node.js
         uses: actions/setup-node@v7
         with:
           node-version: 24
-          cache: 'yarn'
+          cache: 'pnpm'
 
       - name: Install
-        run: yarn
-      
+        run: pnpm install --frozen-lockfile
+
       - name: Download build artifact
         uses: actions/download-artifact@v8
         with:
@@ -82,7 +88,7 @@ jobs:
           path: dist
 
       - name: Increment version
-        run: yarn version patch
+        run: pnpm version patch --no-git-tag-version
 
       - name: Publish to npm
         run: npm publish --provenance --access public

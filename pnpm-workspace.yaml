@@ -1,0 +1,2 @@
+# Refuse to install any version published in the last 24h.
+minimumReleaseAge: 1440

@@ -11,9 +11,7 @@ export default defineConfig({
     coverage: {
       reporter: ['text', 'json', 'html', 'cobertura'],
       exclude: [
-        '**/.pnp.*',
         '**/.history/**',
-        '**/.yarn/**',
         '**/coverage/**',
         '**/dist/**',
         '**/lib/**',
@@ -22,6 +20,6 @@ export default defineConfig({
         '*.config.*',
       ],
     },
-    exclude: [...configDefaults.exclude, '**/.pnp.*'],
+    exclude: [...configDefaults.exclude],
   },
 })
