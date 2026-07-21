@@ -1,2 +1,7 @@
 # Refuse to install any version published in the last 24h.
 minimumReleaseAge: 1440
+
+# Versions allowed through the cooldown above. Prune entries once they age past
+# minimumReleaseAge; they are only needed while a version is still fresh.
+minimumReleaseAgeExclude:
+  - tsdown@0.22.13
