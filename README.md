@@ -42,6 +42,43 @@ console.log(isShabbat(date)); // true or false
 
 ## Functions
 
+### `getDateInfo`
+
+```typescript
+getDateInfo(date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => DateInfo
+```
+
+Returns a full summary of the given date, aggregating every holiday/observance
+check in a single object.
+
+- **date**: A JavaScript Date object or a BasicJewishDate object.
+- **isChutzLaaretz**: *(optional)* A boolean indicating if the calculation should consider diaspora holidays.
+
+The returned `DateInfo` object contains the normalized `jewishDate`, the boolean
+flags `isYomTov`, `isErevYomTov`, `isCholHaMoed`, `isShabbat`, `isErevShabbat`,
+`isRoshChodesh`, `isChanukah`, `isPurim`, `isTzom`, and `holidays` — the name(s)
+of any matched observance (the specific Yom Tov name(s) plus a label for each of
+`Chol HaMoed`, `Rosh Chodesh`, `Chanukah`, `Purim`, and `Tzom`), or an empty
+array.
+
+```javascript
+import { getDateInfo } from 'jewish-holidays';
+
+const info = getDateInfo(new Date(2024, 9, 3)); // Rosh Hashanah
+console.log(info.isYomTov); // true
+console.log(info.holidays); // ["Rosh Hashanah", "Rosh Chodesh"]
+```
+
+### `getTodayInfo`
+
+```typescript
+getTodayInfo(isChutzLaaretz?: boolean) => DateInfo
+```
+
+A convenience wrapper that returns `getDateInfo` for today's date (`new Date()`).
+
+- **isChutzLaaretz**: *(optional)* A boolean indicating if the calculation should consider diaspora holidays.
+
 ### `isYomTov`
 
 ```typescript

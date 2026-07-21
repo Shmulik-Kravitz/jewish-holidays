@@ -51,6 +51,7 @@
  */
 
 export * from "./cholHaMoed";
+export * from "./dateInfo";
 export * from "./holiday";
 export * from "./interfaces";
 export * from "./chanukah";
