@@ -1,2 +1,5 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Auto detect text files and perform LF normalization.
+# eol=lf also keeps the working tree LF on every platform, matching the
+# lineEnding setting in biome.json. Without it, Windows checkouts are CRLF
+# and every freshly checked-out file fails `pnpm lint`.
+* text=auto eol=lf
