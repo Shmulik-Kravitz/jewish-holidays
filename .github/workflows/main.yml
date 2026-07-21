@@ -90,6 +90,9 @@ jobs:
       - name: Increment version
         run: pnpm version patch --no-git-tag-version
 
+      # Publishes the dist downloaded above, as verified by build-and-test.
+      # Do not add a prepack/prepare build hook: tsdown's clean: true would wipe
+      # that artifact and publish an unverified rebuild instead.
       - name: Publish to npm
         run: npm publish --provenance --access public
 

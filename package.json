@@ -24,7 +24,6 @@
     "build": "pnpm typecheck && pnpm lint && tsdown",
     "dev": "tsdown --watch",
     "test": "vitest --config ./config/vitest/vitest.config.mts --coverage",
-    "prepack": "pnpm build",
     "typecheck": "tsc --noEmit",
     "lint": "biome check",
     "lint-fix": "biome check --fix",
