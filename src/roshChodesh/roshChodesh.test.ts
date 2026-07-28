@@ -31,6 +31,11 @@ describe("isRoshChodesh", () => {
     expect(result).toStrictEqual(true);
   });
 
+  it("should accept a Gregorian date", () => {
+    const result = isRoshChodesh(new Date(2023, 8, 16)); // 1st of Tishri, 5784
+    expect(result).toStrictEqual(true);
+  });
+
   it("should return false for a random day", () => {
     const date = new Date(2023, 10, 10); // 26th of Cheshvan, 5784
     const jewishDate = toJewishDate(date);

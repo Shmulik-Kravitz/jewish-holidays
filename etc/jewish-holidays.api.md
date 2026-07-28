@@ -20,18 +20,33 @@ export interface DateInfo {
     isTzom: boolean;
     isYomTov: boolean;
     jewishDate: BasicJewishDate;
+    tzom?: TzomInfo;
 }
 
 // @public
-export const getDateInfo: (date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => DateInfo;
+export const getDateInfo: (date: Date | BasicJewishDate, isChutzLaaretz?: boolean, language?: Language) => DateInfo;
+
+// @public
+export const getHolidayName: (holiday: Holiday, language?: Language) => string;
 
 // Warning: (ae-internal-missing-underscore) The name "getHolidaysForDate" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
 export const getHolidaysForDate: (jewishDate: BasicJewishDate, holidayList: Holiday[]) => Holiday[];
 
+// Warning: (ae-internal-missing-underscore) The name "getPurimList" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const getPurimList: () => Holiday[];
+
 // @public
-export const getTodayInfo: (isChutzLaaretz?: boolean) => DateInfo;
+export const getTodayInfo: (isChutzLaaretz?: boolean, language?: Language) => DateInfo;
+
+// @public
+export const getTzomInfo: (date: Date | BasicJewishDate, language?: Language) => TzomInfo | undefined;
+
+// @public
+export const getTzomotList: () => Tzom[];
 
 // Warning: (ae-internal-missing-underscore) The name "getYomTovList" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -41,6 +56,7 @@ export const getYomTovList: (isChutzLaaretz?: boolean) => Holiday[];
 // @public
 export interface Holiday {
     day: number;
+    hebrewName: string;
     monthName: JewishMonthType;
     name: string;
 }
@@ -71,6 +87,23 @@ export const isTzom: (date: Date | BasicJewishDate) => boolean;
 
 // @public
 export const isYomTov: (date: Date | BasicJewishDate, isChutzLaaretz?: boolean) => boolean;
+
+// @public
+export type Language = "en" | "he";
+
+// @public
+export interface Tzom extends Holiday {
+    shiftOnShabbat: TzomShift | null;
+}
+
+// @public
+export interface TzomInfo {
+    name: string;
+    shift: TzomShift | null;
+}
+
+// @public
+export type TzomShift = "postponed" | "advanced";
 
 // (No @packageDocumentation comment for this package)
 

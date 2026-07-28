@@ -3,25 +3,32 @@
 import {
   type BasicJewishDate,
   calcDaysInMonth,
+  type JewishMonthType,
   toJewishDate,
 } from "jewish-date";
 import { isDateInHolidayList } from "../holiday";
 import type { Holiday } from "../interfaces";
 import { isBasicJewishDate } from "../jewishDateUtils";
 
+const chanukahDays = (
+  monthName: JewishMonthType,
+  days: number[],
+): Holiday[] => {
+  return days.map((day) => ({
+    day,
+    monthName,
+    name: "Chanukah",
+    hebrewName: "חנוכה",
+  }));
+};
+
 const getChanukahList = (jewishYear: number): Holiday[] => {
   const result: Holiday[] = [
-    { day: 25, monthName: "Kislev", name: "Chanukah" },
-    { day: 26, monthName: "Kislev", name: "Chanukah" },
-    { day: 27, monthName: "Kislev", name: "Chanukah" },
-    { day: 28, monthName: "Kislev", name: "Chanukah" },
-    { day: 29, monthName: "Kislev", name: "Chanukah" },
-    { day: 30, monthName: "Kislev", name: "Chanukah" },
-    { day: 1, monthName: "Tevet", name: "Chanukah" },
-    { day: 2, monthName: "Tevet", name: "Chanukah" },
+    ...chanukahDays("Kislev", [25, 26, 27, 28, 29, 30]),
+    ...chanukahDays("Tevet", [1, 2]),
   ];
   if (calcDaysInMonth(jewishYear, "Kislev") === 29) {
-    result.push({ day: 3, monthName: "Tevet", name: "Chanukah" });
+    result.push(...chanukahDays("Tevet", [3]));
   }
   return result;
 };

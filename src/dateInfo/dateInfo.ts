@@ -3,21 +3,35 @@
 import { type BasicJewishDate, toJewishDate } from "jewish-date";
 import { isChanukah } from "../chanukah";
 import { isCholHaMoed } from "../cholHaMoed";
-import { getHolidaysForDate } from "../holiday";
-import type { DateInfo } from "../interfaces";
+import { getHolidayName, getHolidaysForDate } from "../holiday";
+import type { DateInfo, Language } from "../interfaces";
 import { isBasicJewishDate } from "../jewishDateUtils";
-import { isPurim } from "../purim";
+import { getPurimList } from "../purim";
 import { isRoshChodesh } from "../roshChodesh";
 import { isErevShabbat, isShabbat } from "../shabbat";
-import { isTzom } from "../tzumot";
+import { getTzomInfo } from "../tzumot";
 import { getYomTovList, isErevYomTov, isYomTov } from "../yomTov";
+
+/**
+ * The observances that have no holiday list of their own, and so carry their
+ * label here rather than on a {@link Holiday} entry.
+ */
+const observanceLabels: Record<
+  "cholHaMoed" | "roshChodesh" | "chanukah",
+  Record<Language, string>
+> = {
+  cholHaMoed: { en: "Chol HaMoed", he: "חול המועד" },
+  roshChodesh: { en: "Rosh Chodesh", he: "ראש חודש" },
+  chanukah: { en: "Chanukah", he: "חנוכה" },
+};
 
 /**
  * Builds a complete summary of a given date in the Jewish calendar.
  *
  * This function accepts either a Gregorian date or a BasicJewishDate object,
  * normalizes it to a Jewish date, and aggregates every holiday/observance flag
- * the package can determine, along with the name(s) of any matched holiday.
+ * the package can determine, along with the name(s) of any matched holiday and,
+ * on a fast day, the specific fast and how it was shifted off Shabbat.
  *
  * @param date - The date to summarize, which can be either:
  *   - A Gregorian date object, or
@@ -25,6 +39,8 @@ import { getYomTovList, isErevYomTov, isYomTov } from "../yomTov";
  * @param isChutzLaaretz - A boolean indicating whether to consider the holidays
  *   observed in Chutz Laaretz (the diaspora). Defaults to `false`, meaning it
  *   considers only Israeli holidays.
+ * @param language - The language to report holiday and fast names in. Defaults
+ *   to `"en"`.
  *
  * @returns A {@link DateInfo} object describing the date.
  *
@@ -33,11 +49,15 @@ import { getYomTovList, isErevYomTov, isYomTov } from "../yomTov";
  * console.log(info.isYomTov); // true
  * console.log(info.holidays); // ["Rosh Hashanah", "Rosh Chodesh"]
  *
+ * const hebrew = getDateInfo(new Date(2024, 9, 3), false, "he");
+ * console.log(hebrew.holidays); // ["ראש השנה", "ראש חודש"]
+ *
  * @public
  */
 export const getDateInfo = (
   date: Date | BasicJewishDate,
   isChutzLaaretz: boolean = false,
+  language: Language = "en",
 ): DateInfo => {
   const jewishDate: BasicJewishDate = isBasicJewishDate(date)
     ? date
@@ -46,21 +66,28 @@ export const getDateInfo = (
   const isCholHaMoedResult = isCholHaMoed(jewishDate, isChutzLaaretz);
   const isRoshChodeshResult = isRoshChodesh(jewishDate);
   const isChanukahResult = isChanukah(jewishDate);
-  const isPurimResult = isPurim(jewishDate);
-  const isTzomResult = isTzom(jewishDate);
+  const tzom = getTzomInfo(jewishDate, language);
 
   const yomTovNames = getHolidaysForDate(
     jewishDate,
     getYomTovList(isChutzLaaretz),
-  ).map((holiday) => holiday.name);
+  ).map((holiday) => getHolidayName(holiday, language));
 
+  const purimNames = getHolidaysForDate(jewishDate, getPurimList()).map(
+    (holiday) => getHolidayName(holiday, language),
+  );
+
+  // A date can carry several observances, but each is named only once - Yom
+  // Kippur, for instance, is both a Yom Tov and a fast
   const holidays: string[] = [
-    ...yomTovNames,
-    ...(isCholHaMoedResult ? ["Chol HaMoed"] : []),
-    ...(isRoshChodeshResult ? ["Rosh Chodesh"] : []),
-    ...(isChanukahResult ? ["Chanukah"] : []),
-    ...(isPurimResult ? ["Purim"] : []),
-    ...(isTzomResult ? ["Tzom"] : []),
+    ...new Set([
+      ...yomTovNames,
+      ...(isCholHaMoedResult ? [observanceLabels.cholHaMoed[language]] : []),
+      ...(isRoshChodeshResult ? [observanceLabels.roshChodesh[language]] : []),
+      ...(isChanukahResult ? [observanceLabels.chanukah[language]] : []),
+      ...purimNames,
+      ...(tzom ? [tzom.name] : []),
+    ]),
   ];
 
   return {
@@ -72,8 +99,9 @@ export const getDateInfo = (
     isErevShabbat: isErevShabbat(jewishDate),
     isRoshChodesh: isRoshChodeshResult,
     isChanukah: isChanukahResult,
-    isPurim: isPurimResult,
-    isTzom: isTzomResult,
+    isPurim: purimNames.length > 0,
+    isTzom: tzom !== undefined,
+    ...(tzom ? { tzom } : {}),
     holidays,
   };
 };
@@ -87,6 +115,8 @@ export const getDateInfo = (
  * @param isChutzLaaretz - A boolean indicating whether to consider the holidays
  *   observed in Chutz Laaretz (the diaspora). Defaults to `false`, meaning it
  *   considers only Israeli holidays.
+ * @param language - The language to report holiday and fast names in. Defaults
+ *   to `"en"`.
  *
  * @returns A {@link DateInfo} object describing today's date.
  *
@@ -96,6 +126,9 @@ export const getDateInfo = (
  *
  * @public
  */
-export const getTodayInfo = (isChutzLaaretz: boolean = false): DateInfo => {
-  return getDateInfo(new Date(), isChutzLaaretz);
+export const getTodayInfo = (
+  isChutzLaaretz: boolean = false,
+  language: Language = "en",
+): DateInfo => {
+  return getDateInfo(new Date(), isChutzLaaretz, language);
 };

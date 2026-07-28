@@ -33,7 +33,7 @@ describe("Yom Tov validation for Chutz Laaretz with Jewish dates", () => {
     expect(result).toStrictEqual(true);
   });
 
-  it("should return true for Pesach Shel Pesach on 22 Nisan 5785 in Chutz Laaretz", () => {
+  it("should return true for Acharon Shel Pesach on 22 Nisan 5785 in Chutz Laaretz", () => {
     const jewishDate: BasicJewishDate = {
       day: 22,
       monthName: "Nisan",
@@ -83,7 +83,7 @@ describe("Yom Tov validation for Chutz Laaretz with Jewish dates", () => {
     expect(result).toStrictEqual(false);
   });
 
-  it("should return true for Pesach Shel Pesach on 22 Nisan 5785 in Israel", () => {
+  it("should return true for Acharon Shel Pesach on 22 Nisan 5785 in Israel", () => {
     const jewishDate: BasicJewishDate = {
       day: 22,
       monthName: "Nisan",

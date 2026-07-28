@@ -1,6 +1,6 @@
 import { JewishMonth } from "jewish-date";
 import { describe, expect, it } from "vitest";
-import { isPurim } from "./purim";
+import { getPurimList, isPurim } from "./purim";
 
 describe("Purim validation by Gregorian Date", () => {
   it("should recognize March 24, 2024 as Purim", () => {
@@ -36,5 +36,36 @@ describe("Purim validation by Jewish Date", () => {
     const jewishDate = { day: 13, monthName: JewishMonth.Adar, year: 5784 };
     const result = isPurim(jewishDate);
     expect(result).toStrictEqual(false);
+  });
+});
+
+describe("getPurimList", () => {
+  it("should name the 14th Purim and the 15th Shushan Purim, in both Adars", () => {
+    expect(getPurimList()).toStrictEqual([
+      {
+        day: 14,
+        monthName: JewishMonth.Adar,
+        name: "Purim",
+        hebrewName: "פורים",
+      },
+      {
+        day: 15,
+        monthName: JewishMonth.Adar,
+        name: "Shushan Purim",
+        hebrewName: "שושן פורים",
+      },
+      {
+        day: 14,
+        monthName: JewishMonth.AdarII,
+        name: "Purim",
+        hebrewName: "פורים",
+      },
+      {
+        day: 15,
+        monthName: JewishMonth.AdarII,
+        name: "Shushan Purim",
+        hebrewName: "שושן פורים",
+      },
+    ]);
   });
 });

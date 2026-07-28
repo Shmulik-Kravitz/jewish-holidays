@@ -7,15 +7,50 @@ import { isBasicJewishDate } from "../jewishDateUtils/jewishDateUtils";
 
 const getErevYomTovList = (): Holiday[] => {
   const result: Holiday[] = [
-    { day: 29, monthName: "Elul", name: "Erev Rosh Hashanah" },
-    { day: 9, monthName: "Tishri", name: "Erev Yom Kippur" },
-    { day: 14, monthName: "Tishri", name: "Erev Sukkot" },
-    { day: 21, monthName: "Tishri", name: "Erev Simchat Torah" },
+    {
+      day: 29,
+      monthName: "Elul",
+      name: "Erev Rosh Hashanah",
+      hebrewName: "ערב ראש השנה",
+    },
+    {
+      day: 9,
+      monthName: "Tishri",
+      name: "Erev Yom Kippur",
+      hebrewName: "ערב יום הכיפורים",
+    },
+    {
+      day: 14,
+      monthName: "Tishri",
+      name: "Erev Sukkot",
+      hebrewName: "ערב סוכות",
+    },
+    {
+      day: 21,
+      monthName: "Tishri",
+      name: "Erev Simchat Torah",
+      hebrewName: "ערב שמחת תורה",
+    },
 
-    { day: 14, monthName: "Nisan", name: "Erev Pesach" },
-    { day: 20, monthName: "Nisan", name: "Erev Shvi'i Shel Pesach" },
+    {
+      day: 14,
+      monthName: "Nisan",
+      name: "Erev Pesach",
+      hebrewName: "ערב פסח",
+    },
+    {
+      day: 20,
+      monthName: "Nisan",
+      name: "Erev Shvi'i Shel Pesach",
+      hebrewName: "ערב שביעי של פסח",
+    },
 
-    { day: 5, monthName: "Sivan", name: "Erev Shavuot" },
+    {
+      day: 5,
+      monthName: "Sivan",
+      name: "Erev Shavuot",
+      hebrewName: "ערב שבועות",
+    },
   ];
   return result;
 };

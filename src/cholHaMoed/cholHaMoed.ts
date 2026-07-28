@@ -1,38 +1,36 @@
-import { type BasicJewishDate, toJewishDate } from "jewish-date";
+import {
+  type BasicJewishDate,
+  type JewishMonthType,
+  toJewishDate,
+} from "jewish-date";
 import { isDateInHolidayList } from "../holiday";
 import type { Holiday } from "../interfaces";
 import { isBasicJewishDate } from "../jewishDateUtils";
 
+const cholHaMoedDays = (
+  monthName: JewishMonthType,
+  days: number[],
+): Holiday[] => {
+  return days.map((day) => ({
+    day,
+    monthName,
+    name: "Chol HaMoed",
+    hebrewName: "חול המועד",
+  }));
+};
+
 const getCholHaMoedIsrael = (): Holiday[] => {
   const result: Holiday[] = [
-    { day: 16, monthName: "Tishri", name: "Chol HaMoed" },
-    { day: 17, monthName: "Tishri", name: "Chol HaMoed" },
-    { day: 18, monthName: "Tishri", name: "Chol HaMoed" },
-    { day: 19, monthName: "Tishri", name: "Chol HaMoed" },
-    { day: 20, monthName: "Tishri", name: "Chol HaMoed" },
-    { day: 21, monthName: "Tishri", name: "Chol HaMoed" },
-
-    { day: 16, monthName: "Nisan", name: "Chol HaMoed" },
-    { day: 17, monthName: "Nisan", name: "Chol HaMoed" },
-    { day: 18, monthName: "Nisan", name: "Chol HaMoed" },
-    { day: 19, monthName: "Nisan", name: "Chol HaMoed" },
-    { day: 20, monthName: "Nisan", name: "Chol HaMoed" },
+    ...cholHaMoedDays("Tishri", [16, 17, 18, 19, 20, 21]),
+    ...cholHaMoedDays("Nisan", [16, 17, 18, 19, 20]),
   ];
   return result;
 };
 
 const getCholHaMoedChutzLaaretz = (): Holiday[] => {
   const result: Holiday[] = [
-    { day: 17, monthName: "Tishri", name: "Chol HaMoed" },
-    { day: 18, monthName: "Tishri", name: "Chol HaMoed" },
-    { day: 19, monthName: "Tishri", name: "Chol HaMoed" },
-    { day: 20, monthName: "Tishri", name: "Chol HaMoed" },
-    { day: 21, monthName: "Tishri", name: "Chol HaMoed" },
-
-    { day: 17, monthName: "Nisan", name: "Chol HaMoed" },
-    { day: 18, monthName: "Nisan", name: "Chol HaMoed" },
-    { day: 19, monthName: "Nisan", name: "Chol HaMoed" },
-    { day: 20, monthName: "Nisan", name: "Chol HaMoed" },
+    ...cholHaMoedDays("Tishri", [17, 18, 19, 20, 21]),
+    ...cholHaMoedDays("Nisan", [17, 18, 19, 20]),
   ];
   return result;
 };

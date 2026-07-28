@@ -7,29 +7,64 @@ import { isBasicJewishDate } from "../jewishDateUtils/jewishDateUtils";
 
 const getYomTovListIsrael = (): Holiday[] => {
   const result: Holiday[] = [
-    { day: 1, monthName: "Tishri", name: "Rosh Hashanah" },
-    { day: 2, monthName: "Tishri", name: "Rosh Hashanah" },
-    { day: 10, monthName: "Tishri", name: "Yom Kippur" },
-    { day: 15, monthName: "Tishri", name: "Sukkot" },
-    { day: 22, monthName: "Tishri", name: "Simchat Torah" },
+    {
+      day: 1,
+      monthName: "Tishri",
+      name: "Rosh Hashanah",
+      hebrewName: "ראש השנה",
+    },
+    {
+      day: 2,
+      monthName: "Tishri",
+      name: "Rosh Hashanah",
+      hebrewName: "ראש השנה",
+    },
+    {
+      day: 10,
+      monthName: "Tishri",
+      name: "Yom Kippur",
+      hebrewName: "יום הכיפורים",
+    },
+    { day: 15, monthName: "Tishri", name: "Sukkot", hebrewName: "סוכות" },
+    {
+      day: 22,
+      monthName: "Tishri",
+      name: "Simchat Torah",
+      hebrewName: "שמחת תורה",
+    },
 
-    { day: 15, monthName: "Nisan", name: "Pesach" },
-    { day: 21, monthName: "Nisan", name: "Shevii Shel Pesach" },
+    { day: 15, monthName: "Nisan", name: "Pesach", hebrewName: "פסח" },
+    {
+      day: 21,
+      monthName: "Nisan",
+      name: "Shevii Shel Pesach",
+      hebrewName: "שביעי של פסח",
+    },
 
-    { day: 6, monthName: "Sivan", name: "Shavuot" },
+    { day: 6, monthName: "Sivan", name: "Shavuot", hebrewName: "שבועות" },
   ];
   return result;
 };
 
 const getYomTovListChutzLaaretzOnly = (): Holiday[] => {
   const result: Holiday[] = [
-    { day: 16, monthName: "Tishri", name: "Sukkot" },
-    { day: 23, monthName: "Tishri", name: "Simchat Torah" },
+    { day: 16, monthName: "Tishri", name: "Sukkot", hebrewName: "סוכות" },
+    {
+      day: 23,
+      monthName: "Tishri",
+      name: "Simchat Torah",
+      hebrewName: "שמחת תורה",
+    },
 
-    { day: 16, monthName: "Nisan", name: "Pesach" },
-    { day: 22, monthName: "Nisan", name: "Pesach Shel Pesach" },
+    { day: 16, monthName: "Nisan", name: "Pesach", hebrewName: "פסח" },
+    {
+      day: 22,
+      monthName: "Nisan",
+      name: "Acharon Shel Pesach",
+      hebrewName: "אחרון של פסח",
+    },
 
-    { day: 7, monthName: "Sivan", name: "Shavuot" },
+    { day: 7, monthName: "Sivan", name: "Shavuot", hebrewName: "שבועות" },
   ];
   return result;
 };

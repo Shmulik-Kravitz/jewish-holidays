@@ -5,12 +5,40 @@ import { isDateInHolidayList } from "../holiday";
 import type { Holiday } from "../interfaces";
 import { isBasicJewishDate } from "../jewishDateUtils";
 
-const getPurimList = (): Holiday[] => {
+/**
+ * Returns the list of Purim days, distinguishing Purim (14 Adar) from Shushan
+ * Purim (15 Adar).
+ *
+ * @returns The list of Purim days.
+ *
+ * @internal
+ */
+export const getPurimList = (): Holiday[] => {
   return [
-    { day: 14, monthName: JewishMonth.Adar, name: "Purim" },
-    { day: 15, monthName: JewishMonth.Adar, name: "Shushan Purim" },
-    { day: 14, monthName: JewishMonth.AdarII, name: "Purim" },
-    { day: 15, monthName: JewishMonth.AdarII, name: "Shushan Purim" },
+    {
+      day: 14,
+      monthName: JewishMonth.Adar,
+      name: "Purim",
+      hebrewName: "פורים",
+    },
+    {
+      day: 15,
+      monthName: JewishMonth.Adar,
+      name: "Shushan Purim",
+      hebrewName: "שושן פורים",
+    },
+    {
+      day: 14,
+      monthName: JewishMonth.AdarII,
+      name: "Purim",
+      hebrewName: "פורים",
+    },
+    {
+      day: 15,
+      monthName: JewishMonth.AdarII,
+      name: "Shushan Purim",
+      hebrewName: "שושן פורים",
+    },
   ];
 };
 

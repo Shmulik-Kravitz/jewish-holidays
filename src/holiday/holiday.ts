@@ -1,7 +1,27 @@
 // Copyright (c) Shmulik kravitz. All rights reserved. Licensed under the MIT license.
 
 import { type BasicJewishDate, toJewishDate } from "jewish-date";
-import type { Holiday } from "../interfaces";
+import type { Holiday, Language } from "../interfaces";
+
+/**
+ * Returns a holiday's name in the requested language.
+ *
+ * @param holiday - The holiday to name.
+ * @param language - The language to name it in. Defaults to `"en"`.
+ *
+ * @returns The holiday's English or Hebrew name.
+ *
+ * @example
+ * getHolidayName(\{ day: 9, monthName: "Av", name: "Tisha BeAv", hebrewName: "תשעה באב" \}, "he"); // "תשעה באב"
+ *
+ * @public
+ */
+export const getHolidayName = (
+  holiday: Holiday,
+  language: Language = "en",
+): string => {
+  return language === "he" ? holiday.hebrewName : holiday.name;
+};
 
 /**
  * Returns every holiday in a holiday list that falls on a given Jewish date
